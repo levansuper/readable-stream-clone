@@ -1,4 +1,8 @@
+#Readable Stream Clone
+
 npm install readable-stream-clone
+
+with this utility you can pipe readable stream into multiple writable streams
 
 ```js
 var fs = require("fs");

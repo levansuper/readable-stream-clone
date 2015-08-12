@@ -1,0 +1,21 @@
+{
+    "author": {
+        "name": "Levan Basharuli l.basharuli@gmail.com"
+    },
+    "name": "readable-stream-clone",
+    "version": "0.0.1",
+    "description": "readable stream cloner",
+    "main": "readableStreamClone.js",
+    "_id": "readable-stream-clone@0.0.1",
+    "scripts": {},
+    "maintainers": [
+        {
+            "name": "levansuper",
+            "email": "l.basharuli@gmail.com"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:levansuper/readable-stream-clone.git"
+    }
+}

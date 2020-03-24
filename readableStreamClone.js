@@ -14,7 +14,7 @@ var ReadableStream = function(readableStream, options) {
     });
 
     readableStream.on("error", function(err) {
-        me.push(err);
+        me.emit("error", err);
     });
     me._read = function() {
     };

@@ -3,15 +3,16 @@
         "name": "Levan Basharuli l.basharuli@gmail.com"
     },
     "name": "readable-stream-clone",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "readable stream cloner",
     "main": "readable-stream-clone.js",
     "keywords": [
         "readable",
         "stream",
         "clone",
-        "into",
-        "writable"
+        "writable",
+        "typescript",
+        "types"
     ],
     "scripts": {},
     "maintainers": [

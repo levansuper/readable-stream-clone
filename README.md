@@ -1,21 +1,39 @@
-#Readable Stream Clone
+## Readable Stream Clone
 
 npm install readable-stream-clone
 
 with this utility you can pipe readable stream into multiple writable streams
 
+### Node
 ```js
-var fs = require("fs");
-var ReadableStreamClone = require("readable-stream-clone");
+const fs = require("fs");
+const ReadableStreamClone = require("readable-stream-clone");
 
-var readStream = fs.createReadStream('text.txt');
+const readStream = fs.createReadStream('text.txt');
 
-var readStream1 = new ReadableStreamClone(readStream);
-var readStream2 = new ReadableStreamClone(readStream);
+const readStream1 = new ReadableStreamClone(readStream);
+const readStream2 = new ReadableStreamClone(readStream);
 
-var writeStream1 = fs.createWriteStream('sample1.txt');
-var writeStream2 = fs.createWriteStream('sample2.txt');
+const writeStream1 = fs.createWriteStream('sample1.txt');
+const writeStream2 = fs.createWriteStream('sample2.txt');
 
 readStream1.pipe(writeStream1)
 readStream2.pipe(writeStream2)
+```
+
+### Typescript
+```ts
+import * as fs from 'fs';
+import ReadableStreamClone from 'readable-stream-clone'
+
+const readStream = fs.createReadStream('text.txt');
+
+const readClone1 = new ReadableStreamClone(readStream);
+const readClone2 = new ReadableStreamClone(readStream);
+
+const writeStream1 = fs.createWriteStream("text1.txt");
+const writeStream2 = fs.createWriteStream("text2.txt");
+
+readClone1.pipe(writeStream1);
+readClone2.pipe(writeStream2);
 ```

@@ -1,7 +1,7 @@
 var util = require("util");
 var Readable = require('stream').Readable;
 
-var ReadableStream = function(readableStream, options) {
+var ReadableStreamClone = function(readableStream, options) {
     var me = this;
     Readable.call(me, options);
 
@@ -20,6 +20,7 @@ var ReadableStream = function(readableStream, options) {
     };
 };
 
-util.inherits(ReadableStream, Readable);
+util.inherits(ReadableStreamClone, Readable);
 
-module.exports = ReadableStream;
+module.exports = ReadableStreamClone;
+module.exports.default = ReadableStreamClone;

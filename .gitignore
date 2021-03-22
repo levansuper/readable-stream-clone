@@ -29,3 +29,5 @@ java/rest/rest.iml
 **/.idea/
 **/target/
 **/*.iml
+
+text?.txt

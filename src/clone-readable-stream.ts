@@ -4,7 +4,10 @@ class ReadableStreamClone extends Readable {
   constructor(readableStream: Readable, options?: ReadableOptions) {
     super(options);
 
-    readableStream.on('data', (chunk) => {
+    readableStream.on('data', (chunk: Buffer) => {
+      // you can uncomment this line and see how chunks in pushed into two clone stream
+      // you will see that output will be repeated twice
+      // console.log('chunk pushed ', chunk.toString());
       this.push(chunk);
     });
 

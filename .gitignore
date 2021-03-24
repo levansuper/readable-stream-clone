@@ -3,31 +3,14 @@
 # Logs
 *.log
 
-# Runtime data
-*.pid
-*.seed
-
-# file-server-client [JAVA]
-java/file-server-client/.idea/
-java/file-server-client/target/
-java/file-server-client/FileServerClient.iml
-
-# rest [JAVA]
-java/rest/.idea/
-java/rest/target/
-java/rest/rest.iml
 
 #for text editors
 **/*.*~
 
-
-#nbproject for netbeans
-**/nbproject/
-**/node_modules/
+node_modules
 
 #for idea
-**/.idea/
-**/target/
-**/*.iml
+.idea
 
-text?.txt
+#generated test files
+test/text?.txt

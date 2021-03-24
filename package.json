@@ -15,9 +15,10 @@
         "types"
     ],
     "scripts": {
-        "test": "ts-node test.cloneReadableStream.ts",
-        "lint": "eslint cloneRead.ts",
-        "format": "eslint cloneRead.ts --fix"
+        "build": "tsc",
+        "test": "ts-node ./test/clone-readable-stream.spec.ts",
+        "lint": "eslint ./src/*.ts",
+        "format": "eslint ./src/*.ts --fix"
     },
     "maintainers": [
         {
@@ -25,6 +26,7 @@
             "email": "l.basharuli@gmail.com"
         }
     ],
+    "contributors": [{"name": "Ulibka68"}],
     "repository": {
         "type": "git",
         "url": "git@github.com:levansuper/readable-stream-clone.git"

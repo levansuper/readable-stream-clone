@@ -1,11 +1,18 @@
 {
+  "display": "Node 14",
   "compilerOptions":
   {
     "target": "es2020",
     "module": "commonjs",
     "esModuleInterop": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "dist",
+    "removeComments": true,
+    "declaration": true
   },
-  "include": ["*.ts"],
+  "include": ["src/*.ts"],
   "exclude": ["node_modules"],
 }

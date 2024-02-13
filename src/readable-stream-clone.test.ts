@@ -1,5 +1,4 @@
 import { Readable } from "stream";
-import { pipeline } from 'node:stream/promises';
 import fs from "fs-extra";
 
 import ReadableStreamClone, { promisifyWriteStreams } from './readable-stream-clone';

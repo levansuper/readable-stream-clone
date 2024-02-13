@@ -1,9 +1,8 @@
-import { rejects } from 'assert';
 import { Readable, Writable, ReadableOptions  }  from 'stream';
 
 export class ReadableStreamClone extends Readable {
+    
     constructor(readableStream: Readable, options?: ReadableOptions){
-        
         super(options);  
         readableStream.on("data", (chunk) => {
             this.push(chunk);
@@ -16,7 +15,6 @@ export class ReadableStreamClone extends Readable {
         readableStream.on("error", (err) => {
             this.emit("error", err);
         });
-        
     }
     public _read(){}
 }
@@ -37,7 +35,6 @@ export const promisifyWriteStream = async (writableStream : Writable) => {
             reject(err);
         })
     })
-    
 }
 
 export default ReadableStreamClone;

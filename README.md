@@ -7,7 +7,7 @@ with this utility you can pipe readable stream into multiple writable streams
 ### Node
 ```js
 const fs = require("fs");
-const ReadableStreamClone = require("readable-stream-clone");
+const { ReadableStreamClone } = require("readable-stream-clone");
 
 const readStream = fs.createReadStream('text.txt');
 
@@ -24,7 +24,7 @@ readStream2.pipe(writeStream2)
 ### Typescript
 ```ts
 import * as fs from 'fs';
-import ReadableStreamClone from 'readable-stream-clone'
+import { ReadableStreamClone } from 'readable-stream-clone';
 
 const readStream = fs.createReadStream('text.txt');
 
@@ -41,12 +41,16 @@ readClone2.pipe(writeStream2);
 ### Helper functions
 Wait till a writable stream finishes writing
 ```ts
+import { promisifyWriteStream } from 'readable-stream-clone';
+
 const writeStream = fs.createWriteStream("SomeFile.txt");
 await promisifyWriteStream(writeStream);
 ```
 
 Wait till all the writable streams finish writing
 ```ts
+import { promisifyWriteStreams } from 'readable-stream-clone';
+
 const writeStream1 = fs.createWriteStream(fileName1);
 const writeStream2 = fs.createWriteStream(fileName2);
 await promisifyWriteStreams([writeStream1, writeStream2]);

@@ -1,7 +1,7 @@
 import { Readable, Writable, ReadableOptions  }  from 'stream';
 
 export class ReadableStreamClone extends Readable {
-    
+
     constructor(readableStream: Readable, options?: ReadableOptions){
         super(options);  
         readableStream.on("data", (chunk) => {
@@ -36,7 +36,3 @@ export const promisifyWriteStream = async (writableStream : Writable) => {
         })
     })
 }
-
-export default ReadableStreamClone;
-// NodeJS support
-module.exports.default = ReadableStreamClone;

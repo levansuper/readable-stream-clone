@@ -1,7 +1,7 @@
 import { Readable } from "stream";
 import fs from "fs-extra";
 
-import ReadableStreamClone, { promisifyWriteStreams } from './readable-stream-clone';
+import { ReadableStreamClone, promisifyWriteStreams } from './readable-stream-clone';
 
 const path = "tmp-folder";
 const fileName1 = path + `/text1.txt`

@@ -37,3 +37,17 @@ const writeStream2 = fs.createWriteStream("text2.txt");
 readClone1.pipe(writeStream1);
 readClone2.pipe(writeStream2);
 ```
+
+### Helper functions
+Wait till a writable stream finishes writing
+```ts
+const writeStream = fs.createWriteStream("SomeFile.txt");
+await promisifyWriteStream(writeStream);
+```
+
+Wait till all the writable streams finish writing
+```ts
+const writeStream1 = fs.createWriteStream(fileName1);
+const writeStream2 = fs.createWriteStream(fileName2);
+await promisifyWriteStreams([writeStream1, writeStream2]);
+```

@@ -22,6 +22,7 @@ jobs:
   publish-npm:
     needs: test
     runs-on: ubuntu-latest
+    environment: master
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -30,6 +31,7 @@ jobs:
           registry-url: https://registry.npmjs.org
       - run: npm ci
       - run: npm run build
+      - run: echo hello 1 -- $NPM_TOKEN --- $GITHUB_TOKEN --
       - run: npm run semantic-release
         env: 
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

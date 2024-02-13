@@ -1,37 +1,37 @@
-name: Publish
+name: Deploy
+
 on:
-  workflow_run:
-    workflows: [Test]
-    branches: [main]
-    types: [completed]
-
-concurrency: ${{ github.workflow }}-${{ github.ref }}
-
-permissions:
-  contents: write
-  pull-requests: write
-
+  push:
+    branches:    
+      - 'main'
 jobs:
-  publish:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm test
+  publish-npm:
+    needs: test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          version: 7
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-          cache: "pnpm"
-
+          node-version: 20
+          registry-url: https://registry.npmjs.org
       - run: npm ci
       - run: npm run build
-      - name: Create Release Pull Request or Publish
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          publish: pnpm run release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: npm publish
+        env: 
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

@@ -37,7 +37,7 @@ describe("readable-stream-clone", () => {
         await promisifyWriteStreams([writeStream1, writeStream2]);
 
         
-        const result1 = fs.readFileSync(fileName1);
+        const result1 = fs.readFileSync(fileName1, 'utf8');
         const result2 = fs.readFileSync(fileName2, 'utf8');
 
 

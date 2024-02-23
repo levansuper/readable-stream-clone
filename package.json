@@ -29,6 +29,9 @@
         "type": "git",
         "url": "git@github.com:levansuper/readable-stream-clone.git"
     },
+    "files": [
+        "lib/**/*"
+    ],
     "devDependencies": {
         "@types/fs-extra": "^11.0.4",
         "@types/jest": "^29.5.12",

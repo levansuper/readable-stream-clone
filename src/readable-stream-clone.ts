@@ -1,10 +1,9 @@
-import { Readable, Writable, ReadableOptions  }  from 'stream';
+import { Readable, Writable, ReadableOptions } from 'stream';
 
 export class ReadableStreamClone extends Readable {
-
-    constructor(readableStream: Readable, options?: ReadableOptions){
-        super(options);  
-        readableStream.on("data", (chunk) => {
+    constructor(readableStream: Readable, options?: ReadableOptions) {
+        super(options);
+        readableStream.on('data', chunk => {
             this.push(chunk);
         });
 
@@ -12,27 +11,28 @@ export class ReadableStreamClone extends Readable {
             this.push(null);
         });
 
-        readableStream.on("error", (err) => {
-            this.emit("error", err);
+        readableStream.on('error', err => {
+            this.emit('error', err);
         });
     }
-    public _read(){}
+    public _read() {}
 }
 
+export const promisifyWriteStreams = async (writableStreams: Writable[]) => {
+    return Promise.all(
+        writableStreams.map((writable: Writable) => {
+            return promisifyWriteStream(writable);
+        })
+    );
+};
 
-export const promisifyWriteStreams = async (writableStreams : Writable[]) => {
-    return Promise.all(writableStreams.map((writable : Writable) => {
-        return promisifyWriteStream(writable);
-    }))
-}
-
-export const promisifyWriteStream = async (writableStream : Writable) => {
+export const promisifyWriteStream = async (writableStream: Writable) => {
     return new Promise((resolve, reject) => {
         writableStream.on('finish', () => {
             resolve(null);
-        })
-        writableStream.on('error', (err) => {
+        });
+        writableStream.on('error', err => {
             reject(err);
-        })
-    })
-}
+        });
+    });
+};

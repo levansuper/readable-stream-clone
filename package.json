@@ -20,7 +20,7 @@
         "format": "prettier --write \"{src/**/*.ts,jest.config.js}\"",
         "prepare": "simple-git-hooks",
         "pre:commit": "lint-staged",
-        "test": "npm run test:specs && npm run test:format",
+        "test": "npm run test:format && npm run test:specs",
         "test:format": "prettier --check \"{src/**/*.ts,jest.config.js}\"",
         "test:specs": "jest"
     },
@@ -31,7 +31,7 @@
     },
     "simple-git-hooks": {
         "pre-commit": "npm run pre:commit"
-    },    
+    },
     "maintainers": [
         {
             "name": "levansuper",
